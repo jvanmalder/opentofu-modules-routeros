@@ -41,5 +41,5 @@ resource "routeros_ip_service" "tls_services" {
   port        = each.value.port
   disabled    = !each.value.enabled
   tls_version = var.tls_version
-  certificate = routeros_system_certificate.webfig.name
+  certificate = routeros_system_certificate.web-ssl.name
 }

@@ -12,13 +12,13 @@ resource "routeros_interface_bridge" "bridge" {
 
 # =================================================================================================
 # Bridge Ports
-# Adds ethernet interfaces as bridge members. The PVID is set to the untagged VLAN's ID
+# Adds interfaces as bridge members. The PVID is set to the untagged VLAN's ID
 # when specified, allowing incoming untagged frames to be classified into the correct VLAN.
 # https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/interface_bridge_port
 # =================================================================================================
-resource "routeros_interface_bridge_port" "ethernet_ports" {
+resource "routeros_interface_bridge_port" "bridge_ports" {
   for_each = {
-    for k, v in var.ethernet_interfaces : k => v
+    for k, v in var.interfaces : k => v
     if v.bridge_port != false
   }
 

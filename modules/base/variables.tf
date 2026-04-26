@@ -25,7 +25,7 @@ variable "disable_ipv6" {
 
 variable "ntp_servers" {
   type        = list(string)
-  default     = ["time.cloudflare.com"]
+  default     = ["nl.pool.ntp.org"]
   description = "List of NTP server addresses for time synchronization."
 }
 
@@ -65,7 +65,7 @@ variable "ip_services" {
   }))
   default = {
     "api"     = { enabled = false, port = 8728 }
-    "api-ssl" = { enabled = true, port = 8729 }
+    "api-ssl" = { enabled = false, port = 8729 }
     "ftp"     = { enabled = false, port = 21 }
     "ssh"     = { enabled = false, port = 22 }
     "telnet"  = { enabled = false, port = 23 }
@@ -198,7 +198,7 @@ variable "vlans" {
 # =================================================================================================
 # Interface Configuration
 # =================================================================================================
-variable "ethernet_interfaces" {
+variable "interfaces" {
   type = map(object({
     comment     = optional(string, "")
     bridge_port = optional(bool, true)
@@ -208,7 +208,7 @@ variable "ethernet_interfaces" {
     untagged    = optional(string)
   }))
   default     = {}
-  description = "Map of ethernet interfaces to configure. Keys are interface names (e.g., 'ether1'). Supports bridge membership and VLAN tagging."
+  description = "Map of interfaces to configure. Keys are interface names (e.g., 'ether1'). Supports bridge membership and VLAN tagging."
 }
 
 variable "bond_interfaces" {

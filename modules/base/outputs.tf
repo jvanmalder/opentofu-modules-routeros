@@ -48,17 +48,17 @@ output "user_passwords" {
 # =================================================================================================
 output "certificate_name" {
   description = "The name of the device TLS certificate."
-  value       = routeros_system_certificate.webfig.name
+  value       = routeros_system_certificate.web-ssl.name
 }
 
 output "certificate_common_name" {
   description = "The Common Name (CN) of the device TLS certificate."
-  value       = routeros_system_certificate.webfig.common_name
+  value       = routeros_system_certificate.web-ssl.common_name
 }
 
 output "certificate_fingerprint" {
   description = "The fingerprint of the device TLS certificate."
-  value       = routeros_system_certificate.webfig.fingerprint
+  value       = routeros_system_certificate.web-ssl.fingerprint
 }
 
 output "ca_certificate_name" {

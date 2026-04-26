@@ -1,5 +1,5 @@
-resource "routeros_interface_ethernet" "ethernet" {
-  for_each = var.ethernet_interfaces
+resource "routeros_interface_ethernet" "interfaces" {
+  for_each = var.interfaces
 
   factory_name = each.key
   name         = each.key

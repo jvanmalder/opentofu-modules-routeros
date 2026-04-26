@@ -1,7 +1,7 @@
 # =================================================================================================
 # VLAN Assignment Logic
 #
-# This block collects VLAN memberships from both ethernet and bond interfaces, then
+# This block collects VLAN memberships from both regular and bond interfaces, then
 # builds the bridge VLAN table. Each interface can carry multiple tagged VLANs and
 # at most one untagged (native) VLAN. The bridge interface itself is always added
 # as a tagged member of every VLAN so the CPU can process traffic for all VLANs.
@@ -12,7 +12,7 @@ locals {
   bridge_vlan_assignments = flatten([
     # Ethernet interfaces: tagged VLANs
     flatten([
-      for iface_name, iface in var.ethernet_interfaces : [
+      for iface_name, iface in var.interfaces : [
         for vlan_name in(iface.tagged != null ? iface.tagged : []) : {
           vlan_name = vlan_name
           iface     = iface_name
@@ -22,7 +22,7 @@ locals {
     ]),
     # Ethernet interfaces: untagged (native) VLAN
     [
-      for iface_name, iface in var.ethernet_interfaces : {
+      for iface_name, iface in var.interfaces : {
         vlan_name = iface.untagged
         iface     = iface_name
         type      = "untagged"

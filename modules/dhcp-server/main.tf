@@ -52,7 +52,6 @@ resource "routeros_ip_dhcp_server" "this" {
   lease_time                = var.lease_time
   client_mac_limit          = var.client_mac_limit
   conflict_detection        = var.conflict_detection
-  dynamic_lease_identifiers = var.dynamic_lease_identifiers
 }
 
 # --- Static Leases ---

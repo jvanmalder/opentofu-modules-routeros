@@ -1,3 +1,8 @@
+import {
+  to = routeros_system_certificate.local-root-ca-cert
+  id = "*1"
+}
+
 # =================================================================================================
 # Root CA Certificate
 # https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/system_certificate
@@ -20,8 +25,8 @@ resource "routeros_system_certificate" "local-root-ca-cert" {
 # Device Certificate (signed by root CA)
 # Used by TLS-enabled services (api-ssl, www-ssl)
 # =================================================================================================
-resource "routeros_system_certificate" "webfig" {
-  name         = "webfig"
+resource "routeros_system_certificate" "web-ssl" {
+  name         = "web-ssl"
   common_name  = var.certificate_common_name
   country      = var.certificate_country
   locality     = var.certificate_locality
