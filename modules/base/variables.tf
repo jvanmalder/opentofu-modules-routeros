@@ -220,6 +220,7 @@ variable "bond_interfaces" {
     mtu                  = optional(number, 1500)
     tagged               = optional(list(string))
     untagged             = optional(string)
+    forced_mac_address   = optional(string)
   }))
   default     = {}
   description = "Map of bond interfaces to configure. Keys are bond names. Supports LACP (802.3ad), balance-rr, balance-xor, broadcast, active-backup, balance-tlb, and balance-alb modes."
