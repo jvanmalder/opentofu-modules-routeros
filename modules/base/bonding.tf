@@ -35,3 +35,19 @@ resource "routeros_interface_bridge_port" "bond_ports" {
     [for k, v in var.vlans : v.vlan_id if v.name == each.value.untagged][0]
   ) : 1
 }
+
+# =================================================================================================
+# Bond Interface IP addresses
+# Adds IP addresses to bond interfaces
+# https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/ip_address
+# =================================================================================================
+resource "routeros_ip_address" "address" {
+
+  for_each = {
+    for k, v in var.bond_interfaces : k => v.ip_address if v.ip_address != null
+  }
+
+  address   = each.value.address
+  interface = each.key
+  network   = each.value.network
+}

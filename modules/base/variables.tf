@@ -221,6 +221,10 @@ variable "bond_interfaces" {
     tagged               = optional(list(string))
     untagged             = optional(string)
     forced_mac_address   = optional(string)
+    ip_address           = optional(object({
+      address = string
+      network = string
+    }))
   }))
   default     = {}
   description = "Map of bond interfaces to configure. Keys are bond names. Supports LACP (802.3ad), balance-rr, balance-xor, broadcast, active-backup, balance-tlb, and balance-alb modes."
