@@ -11,6 +11,7 @@ resource "routeros_interface_bonding" "bonds" {
   mode                 = each.value.mode
   transmit_hash_policy = each.value.transmit_hash_policy
   mtu                  = each.value.mtu
+  forced_mac_address   = each.value.forced_mac_address
 
 }
 
