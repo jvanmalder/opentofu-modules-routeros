@@ -220,7 +220,6 @@ variable "bond_interfaces" {
     mtu                  = optional(number, 1500)
     tagged               = optional(list(string))
     untagged             = optional(string)
-    forced_mac_address   = optional(string)
     ip_address           = optional(object({
       address = string
       network = string
